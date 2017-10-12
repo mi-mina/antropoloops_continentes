@@ -141,7 +141,7 @@
 {"lugar":"India-Tamil","coordX":891,"coordY":483,"pais":"India"},
 {"lugar":"Siberia","coordX":901,"coordY":246,"pais":"Rusia"},
 {"lugar":"Nepal","coordX":903,"coordY":412,"pais":""},
-{"lugar":"Tuva ","coordX":912,"coordY":310,"pais":"Rusia"},
+{"lugar":"Tuva","coordX":912,"coordY":310,"pais":"Rusia"},
 {"lugar":"Tibet","coordX":919,"coordY":398,"pais":""},
 {"lugar":"Bangladesh","coordX":927,"coordY":429,"pais":""},
 {"lugar":"India-Nagaland","coordX":943,"coordY":419,"pais":"India"},
