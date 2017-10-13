@@ -204,9 +204,9 @@ void draw() {
         // print(ultimoLoop);
      // }
       
-      float hu = (Float)ultimoLoop.get("colorH");
-      float su = (Float)ultimoLoop.get("colorS");
-      float bu = (Float)ultimoLoop.get("colorB");
+      int hu = (Integer)ultimoLoop.get("colorH");
+      int su = (Integer)ultimoLoop.get("colorS");
+      int bu = (Integer)ultimoLoop.get("colorB");
       float volu = (Float)ultimoLoop.get("volume");
 
       if (dibujaOnda == true && volu>0.05) {
@@ -279,9 +279,9 @@ void draw() {
                   textSize(alturaText);
                  
 
-                  float h = (Float)unClip.get("colorH");
-                  float s = (Float)unClip.get("colorS");
-                  float b = (Float)unClip.get("colorB");
+                  int h = (int)unClip.get("colorH");
+                  int s = (int)unClip.get("colorS");
+                  int b = (int)unClip.get("colorB");
                   float vol = (Float)unClip.get("volume");
 
                   PImage miImagen = misImagenes.get(unClip.get("trackLoop")+"-"+unClip.get("clipLoop"));

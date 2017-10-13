@@ -15,30 +15,33 @@ void oscEvent(OscMessage theOscMessage) {
     infoLoop.put("nombreLoop", theOscMessage.arguments()[2]);
     infoLoop.put("colorS", random(60, 100));
     infoLoop.put("colorB", random(80, 100));
-
-    if ((Integer)theOscMessage.arguments()[0]==0) {
-      infoLoop.put("colorH", 0);
-    } 
-    else if ((Integer)theOscMessage.arguments()[0]==1) {
-      infoLoop.put("colorH", random(8, 18));
-    }
-    else if ((Integer)theOscMessage.arguments()[0]==2) {
-      infoLoop.put("colorH", random(350, 358));
-    }
-    else if ((Integer)theOscMessage.arguments()[0]==3) {
-      infoLoop.put("colorH", random(107, 117));
-    }
-    else if ((Integer)theOscMessage.arguments()[0]==4) {
-      infoLoop.put("colorH", random(45, 55));
-    }
-    else if ((Integer)theOscMessage.arguments()[0]==5) {
-      infoLoop.put("colorH", random(195, 205));
-    }
-    else if ((Integer)theOscMessage.arguments()[0]==6) {
-      infoLoop.put("colorH", random(275, 285));
-    }
-    else if ((Integer)theOscMessage.arguments()[0]==7) {
-      infoLoop.put("colorH", 0);
+    
+    int track = (Integer)theOscMessage.arguments()[0];
+    int clip = (Integer)theOscMessage.arguments()[1];
+    if ((track == 1 && clip == 0) || (track == 3 && clip == 0) || (track == 5 && clip == 0) || (track == 5 && clip == 1)) {
+      infoLoop.put("colorH", 13);
+      infoLoop.put("colorS", 64);
+      infoLoop.put("colorB", 95);
+    } else if ((track == 1 && clip == 1) || (track == 3 && clip == 1)) {
+      infoLoop.put("colorH", 358);
+      infoLoop.put("colorS", 67);
+      infoLoop.put("colorB", 93);
+    } else if ((track == 1 && clip == 2) || (track == 3 && clip == 2) || (track == 5 && clip == 2)) {
+      infoLoop.put("colorH", 112);
+      infoLoop.put("colorS", 40);
+      infoLoop.put("colorB", 69);
+    } else if ((track == 2 && clip == 0) || (track == 4 && clip == 0) || (track == 6 && clip == 0)) {
+      infoLoop.put("colorH", 50);
+      infoLoop.put("colorS", 57);
+      infoLoop.put("colorB", 99);
+    } else if ((track == 2 && clip == 1) || (track == 4 && clip == 1) || (track == 4 && clip == 2) || (track == 6 && clip == 1)) {
+      infoLoop.put("colorH", 198);
+      infoLoop.put("colorS", 58);
+      infoLoop.put("colorB", 82);
+    } else if ((track == 2 && clip == 2) || (track == 6 && clip == 2)) {
+      infoLoop.put("colorH", 280);
+      infoLoop.put("colorS", 20);
+      infoLoop.put("colorB", 80);
     }
 
     miAntropoloops.put(infoLoop.get("trackLoop")+"-"+infoLoop.get("clipLoop"), infoLoop); 
