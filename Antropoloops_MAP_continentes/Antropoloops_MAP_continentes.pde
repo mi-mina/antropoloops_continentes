@@ -58,38 +58,21 @@ float d;
 
 //============================================================================
 void setup() {
+  frameRate(10);
   size(displayWidth, displayHeight);
   if (frame != null) {
     frame.setResizable(true);
   }
 
-  mundi = loadImage("../1_BDatos/"+"mapa_1728x1080_continentes.jpg");
+  mundi = loadImage("mapa_1728x1080_continentes.jpg");
   colorMode(HSB, 360, 100, 100, 100);
-  PFont font;
-  font= loadFont("../1_BDatos/"+"ArialMT-20.vlw");
   textAlign(LEFT, CENTER);
-
-// oscP5 = new OscP5(this, inPort);
-// myRemoteLocation = new NetAddress("localhost", outPort);
   
-  /* create a new osc properties object */
   OscProperties properties = new OscProperties();
-  /* set a default NetAddress. sending osc messages with no NetAddress parameter 
-   * in oscP5.send() will be sent to the default NetAddress.
-   */
   properties.setRemoteAddress("localhost", outPort);
-   /* the port number you are listening for incoming osc packets. */
   properties.setListeningPort(inPort);
-  /* set the datagram byte buffer size. this can be useful when you send/receive
-   * huge amounts of data, but keep in mind, that UDP is limited to 64k
-  */
   properties.setDatagramSize(5000);
-   /* initialize oscP5 with our osc properties */
   oscP5 = new OscP5(this,properties);
-  //println("Estas son las propiedades "+properties.toString());
-
-
-
 
   statePuntoRojo = 0;
   statePuntoVerde = 0;
@@ -99,8 +82,8 @@ void setup() {
   timerOnda = new Timer(0);
 
   //**********Cargo los datos de las Bases de Datos***************
-  misLoopsJSON = loadJSONArray ("../1_BDatos/"+"BDloops.txt");
-  misLugaresJSON = loadJSONArray ("../1_BDatos/"+"BDlugares.txt");
+  misLoopsJSON = loadJSONArray ("BDloops.txt");
+  misLugaresJSON = loadJSONArray ("BDlugares.txt");
 
   todosMisLoops = new HashMap<String, HashMap<String, Object>>();
   for (int i=0; i<misLoopsJSON.size(); i++) { 
@@ -139,8 +122,6 @@ void draw() {
     textSize(height*1.6/8/13);
     fill(255);
     text(web, (width-(height*1.6))/2+10, height-28);
-    fill(150);
-    text("www.mi-mina.com", (width-(height*1.6))/2+10, height-13);
   }
   if (float(width)/float(height)<1.6) {
     image(mundi, 0, (height-(width/1.6))/2, width, width/1.6);
@@ -150,8 +131,6 @@ void draw() {
     textSize(width/8/13);
     fill(255);
     text(web, 10, height-(height-(width/1.6))/2-28);
-    fill(150);
-    text("www.mi-mina.com", 10, height-(height-(width/1.6))/2-13);
   }
 
   if (timerPuntoRojo.isFinished()) {
@@ -199,10 +178,6 @@ void draw() {
       misAbanicos = new Abanico[miAntropoloops.size()];
       miRed = new Red[miAntropoloops.size()];
       m = millis();
-
-     // if (!ultimoLoop.isEmpty()) {
-        // print(ultimoLoop);
-     // }
       
       int hu = (Integer)ultimoLoop.get("colorH");
       int su = (Integer)ultimoLoop.get("colorS");
@@ -242,7 +217,6 @@ void draw() {
           HashMap<String, Object> unClip = (HashMap)me.getValue();
 
           if (unClip.get("state")!= null) {
-
             if ((Integer)unClip.get("state")==2) {
               if (!soloState()) {
                 if ((Integer)unClip.get("mute")!=null && (Integer)unClip.get("mute")==0) {     
@@ -344,8 +318,8 @@ void draw() {
                       textAlign(LEFT, CENTER);
 
                       fill(0, 0, 17, volu*223);
-                      text("title", finalX-(ladoCuadrado-4), finalY-((ladoCuadrado-12)/3*2.5+11));
-                      text("artist", finalX-(ladoCuadrado-4), finalY-((ladoCuadrado-12)/3*1.5+9));
+                      text("título", finalX-(ladoCuadrado-4), finalY-((ladoCuadrado-12)/3*2.5+11));
+                      text("artista", finalX-(ladoCuadrado-4), finalY-((ladoCuadrado-12)/3*1.5+9));
                       text("album", finalX-(ladoCuadrado-4), finalY-((ladoCuadrado-12)/3*0.5+6));
                     }
                  }
